@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import { Navbar, Container, Form } from 'react-bootstrap';
+import React, {useContext, useState} from 'react';
+import { Navbar, Container, Form, Button } from 'react-bootstrap';
 import Logo from '../assets/logo.png';
 import GitContext from '../context/gitData/gitContext';
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const {findUserByWord, verifyValue, valueInput} = useContext(GitContext);
 
+  const[inputValue, setInputValue]= useState('')
   const navigate = useNavigate();
   return ( 
    
@@ -23,7 +24,8 @@ const NavBar = () => {
           />{' '}
         Akimad Test
         </Navbar.Brand>
-        <Form.Control value={valueInput}  type="email" placeholder="name User" onChange={(e) => {findUserByWord(e.target.value); verifyValue(e.target.value)}} />
+        <Form.Control value={valueInput}  type="email" placeholder="name User" onChange={(e) => { setInputValue(e.target.value); verifyValue(e.target.value)}} />
+        <Button variant="primary" disabled={!inputValue} onClick={() => {findUserByWord(inputValue); setInputValue(''); }} style={{marginLeft:5}}>Buscar</Button>
       </Container>
     </Navbar>
    );
