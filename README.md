@@ -13,6 +13,3 @@
 - `npm install` para instalar las dependencias.
 - `npm start` para iniciar el proyecto
 
-## ¿Dónde ver el proyecto? 
-
-https://akimattest.000webhostapp.com/
